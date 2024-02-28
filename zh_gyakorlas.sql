@@ -14,3 +14,4 @@ SELECT *,
         GROUP BY szh.TIPUS, YEAR(f.METTOL), MONTH(f.METTOL)
 
 --feladat3
+--ide csak probabol irok valamit nagyon random
