@@ -1,0 +1,23 @@
+//1. feladat
+
+{"languages.0": "English", "awards.wins": 2}
+{"title":1, "directors": 1, "writers":1, "year":1, "_id":0}
+{"year": -1}
+
+//2. feladat
+db.users.find({"email": {$regex:/com/}},{"email":1, "name":1, "_id":0})
+
+//3. feladat
+db.movies.aggregate([ { $match: { "year": { $gt: 1950 } } }, { $group: { _id: "$rated", atlagido: { $avg: "$runtime" } } }] )
+
+//4. feladat
+match (p:Person)-[:ACTED_IN]->(m:Movie)
+WHERE m.released > 1970 or m.released CONTAINS 'love'
+return p.name as `nev`, m.title as `cim`
+order by cim desc
+
+//5. feladat
+match (p:Person)-[:DIRECTED]->(m:Movie)
+return p.name as `Director`, count(*) as `NumMoviesDirected`
+order by NumMoviesDirected desc
+limit 5
